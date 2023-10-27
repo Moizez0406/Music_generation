@@ -1,0 +1,56 @@
+Train Your Model (if not pre-trained):
+	If you are using a machine learning model like the LSTM model mentioned earlier, 	you'll need to train it on your MIDI data. Training involves feeding your model with 	input sequences (like segments of MIDI notes) and their corresponding target 	sequences (the notes you want the model to learn to generate). This step is crucial 	for the model to learn the patterns in your music data.
+
+Load Pre-trained Model (if using one):
+	If you're using a pre-trained model, you'll need to load it before generating music. 	Make sure the pre-trained model is compatible with the architecture you are using in 	your code.
+
+Generate Music:
+	After your model is trained or loaded, you can use it to generate music. To generate 	music, you'll need to provide an initial seed (a sequence of notes) to the model. The 	model will then predict the next notes based on the seed, and you can use these 	predictions to create a new sequence of notes. You might need to experiment with the 	length of the generated sequence and other parameters to get the desired output.
+
+-------------------------------------------------------------------------------------------
+
+
+1. Prepare Your Data:
+	Organize your MIDI files and preprocess them into sequences suitable for training. 	This might involve representing notes as numerical values or one-hot encodings.
+	
+
+2. Define Model Architecture:
+	Choose an appropriate model architecture for music generation, like LSTM or 	Transformer.Design the input and output layers of the model. Set hyperparameters 	such as the number of LSTM units, learning rate, batch size,etc.
+
+
+3. Split Data into Training and Validation Sets:
+	Split your preprocessed data into training and validation sets. Typically, 80% for 	training and 20% for validation is a common split.
+
+
+4. Compile Your Model:
+	Choose an appropriate loss function (like categorical crossentropy) and optimizer 	(like Adam) for compilation.
+	Compile your model to prepare it for training.
+
+
+5. Train Your Model:
+	Train the model using your training data.
+	Monitor the training process using validation data to avoid overfitting.
+	Experiment with different architectures and hyperparameters to improve results.
+
+
+ERROR:
+	Errores al momento de empzar al trabajar con las liberrias como:
+	Cannot find reference 'keras' in '__init__.py | __init__.py'	
+
+	Muy dificil a la hora de probar varios samples ya que con cada una de las puebras el tamano varian 
+	y no se puede hacer un entrenamiento con un tamano fijo.
+
+	Los samples creados eran muy monotonos cortos y no se podia apreciar la musica.
+	 ademas de que no se podia decir con certeza si cada input generaba diferentes outputs.
+
+
+
+
+
+
+
+
+
+
+
+
