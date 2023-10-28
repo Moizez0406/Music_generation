@@ -11,8 +11,8 @@ def generate_minor_scale(root_note):
     return minor_scale
 
 # Definiciones de tiempos
-TIEMPO_NEGRA = 1.0
-TIEMPO_BLANCA = 2.0
+TIEMPO_NEGRA = 1
+TIEMPO_BLANCA = 2
 TIEMPO_CORCHEA = 0.5
 TIEMPO_SEMICORCHEA = 0.25
 TIEMPO_FUSA = 0.125

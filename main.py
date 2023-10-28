@@ -9,7 +9,7 @@ import numpy as np
 
 # Constants for data preparation
 SEQ_LENGTH = 20
-num_unique_notes = 43
+num_unique_notes = 44
 STEP = 1
 
 # Load your MIDI note sequences here
@@ -40,8 +40,12 @@ model.add(LSTM(128, input_shape=(SEQ_LENGTH, num_unique_notes)))
 model.add(Dense(num_unique_notes, activation="softmax"))
 model.compile(loss="categorical_crossentropy", optimizer="adam")
 
+model.add(LSTM(128, input_shape=(SEQ_LENGTH, num_unique_notes)))
+model.add(Dense(num_unique_notes, activation="softmax"))
+model.compile(loss="categorical_crossentropy", optimizer="adam")
+
 # Train the model
-model.fit(X, y, epochs=100, batch_size=64)
+model.fit(X, y, epochs=LSTM_EPOCHS, batch_size=BATCH_SIZE)
 
 # Save the trained model
 model.save("out/Tmodels/music_model.keras")

@@ -34,14 +34,18 @@ Generate Music:
 
 
 ERROR:
-	Errores al momento de empzar al trabajar con las liberrias como:
-	Cannot find reference 'keras' in '__init__.py | __init__.py'	
+	+ 	Errores al momento de empzar al trabajar con las liberrias como:
+	  	Cannot find reference 'keras' in '__init__.py | __init__.py'	
 
-	Muy dificil a la hora de probar varios samples ya que con cada una de las puebras el tamano varian 
-	y no se puede hacer un entrenamiento con un tamano fijo.
+	+	Muy dificil a la hora de probar varios samples ya que con cada una de las puebras el tamano varian 
+		y no se puede hacer un entrenamiento con un tamano fijo.
 
-	Los samples creados eran muy monotonos cortos y no se podia apreciar la musica.
-	 ademas de que no se podia decir con certeza si cada input generaba diferentes outputs.
+	+	Los samples creados eran muy monotonos cortos y no se podia apreciar la musica.
+	 	ademas de que no se podia decir con certeza si cada input generaba diferentes outputs.
+
+	+	Intente asignar tiempo a las notas anets de generar mi sequencia, cambiando asi la manera ne que manejo los modelos
+		dando entonces errores, la solucion generar normals y luego asignarles el tiempo.
+Info:
 
 
 
