@@ -1,6 +1,19 @@
 import pretty_midi
 import numpy as np
+import os
 
+
+def load_midi_file(file_path):
+    # Get a list of all files in the specified directory
+    midi_files = [os.path.join(file_path, file) for file in os.listdir(file_path) if file.endswith(".mid")]
+
+    all_note_sequences = []
+    for midi_file_path in midi_files:
+        note_sequences = midi_to_note_sequences(midi_file_path)
+        all_note_sequences.extend(note_sequences)
+    
+    return all_note_sequences
+        
 def midi_to_note_sequences(midi_file_path):
     midi_data = pretty_midi.PrettyMIDI(midi_file_path)
     note_sequences = []
@@ -11,10 +24,6 @@ def midi_to_note_sequences(midi_file_path):
             note_sequences.append(pitch)
     
     return note_sequences
-
-# Example usage
-# midi_file_path = "path/to/your/midi/file.mid"
-# note_sequences = midi_to_note_sequences(midi_file_path)
 
 def midi_to_one_hot(note_sequences):
     # Create a mapping of pitch values to integers

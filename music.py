@@ -31,23 +31,20 @@ def convert_to_midi_notes(sequence):
         current_time = end_time
     return midi_notes
 
-# Convierte las notas numéricas en notas MIDI con las duraciones asociadas
-midi_notes = convert_to_midi_notes(formatted_sequence)
-
-# Crea un objeto PrettyMIDI
-midi_data = pretty_midi.PrettyMIDI(initial_tempo=TEMPO)
-
-# Crea una instancia de Instrumento para el piano (u otro instrumento de tu elección)
-instrument = pretty_midi.Instrument(program=0)  # 0 corresponde al Acoustic Grand Piano
-
-# Agrega las notas generadas al instrumento
-for midi_note in midi_notes:
-    instrument.notes.append(midi_note)
-
-# Agrega el instrumento a los datos MIDI
-midi_data.instruments.append(instrument)
 
 try:
+    # Convierte las notas numéricas en notas MIDI con las duraciones asociadas
+    midi_notes = convert_to_midi_notes(formatted_sequence)
+    midi_data = pretty_midi.PrettyMIDI(initial_tempo=TEMPO)
+    instrument = pretty_midi.Instrument(program=0)  # 0 corresponde al Acoustic Grand Piano
+
+    # Agrega las notas generadas al instrumento
+    for midi_note in midi_notes:
+        instrument.notes.append(midi_note)
+
+    # Agrega el instrumento a los datos MIDI
+    midi_data.instruments.append(instrument)
+
     # Guarda la música generada como un archivo MIDI
     midi_data.write('out/music/generated_music.mid')
     print("Archivo MIDI generado con éxito.")
