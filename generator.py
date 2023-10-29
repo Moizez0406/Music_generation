@@ -3,14 +3,15 @@ import numpy as np
 import json
 
 # Load the trained model
-model = load_model('out/Tmodels/music_model.keras')
+model = load_model('out/Tmodels/music_model_combined.keras')
 SEQ_LENGTH = 20
 
 # Get the number of unique notes from the model output shape
 num_unique_notes = model.output_shape[1]
 
 # Define your initial sequence with SEQ_LENGTH elements
-initial_seed = [60, 62, 64, 65, 67, 69, 71, 72, 73, 74, 60, 74, 60, 71, 62, 65, 65, 64, 73, 71]
+# initial_seed = [60, 62, 64, 65, 67, 69, 71, 72, 73, 74, 60, 74, 60, 71, 62, 65, 65, 64, 73, 71]
+initial_seed = [60, 62, 64, 65, 67, 69, 71, 72, 73, 74, 60, 62, 64, 65, 67, 69, 71, 72, 73, 74]
 
 # Set the desired length of the generated sequence
 sequence_length = 500

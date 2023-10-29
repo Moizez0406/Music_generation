@@ -45,11 +45,18 @@ ERROR:
 
 	+	Intente asignar tiempo a las notas anets de generar mi sequencia, cambiando asi la manera ne que manejo los modelos
 		dando entonces errores, la solucion generar normals y luego asignarles el tiempo.
+		
 Info:
+	+	Started with the idea of just generate sound
+	+	Then i wanted to give each note a time, so i could generate a melody
+	+	Used lstm to generate the duration of each note
+	+	implemented silences
+	+	implemented chords
+	+	implemented sound modulation
+	+   Thats All Folks :D
 
-
-
-
+Reference:
+	+	https://www.flaticon.es/ [Here I got all the icons]
 
 
 
