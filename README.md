@@ -13,7 +13,7 @@ Los folder mas importantes son:
 
 - `data`: Lugar donde se debe subir los archivos con los que se desa entrenar al modelo
 - `models`: Parametros para el LSTM 
-- `GUI`: the folder to maintain dependencies
+- `GUI`: Interfaz para usuarios mas casuales 
 
 Por otro lado, todos los archivos generados iran al folder `out` por defecto.
 
