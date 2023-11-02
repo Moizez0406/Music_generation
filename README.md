@@ -17,14 +17,15 @@ Los folder mas importantes son:
 
 Por otro lado, todos los archivos generados iran al folder `out` por defecto.
 
-# Usi de codigos .py
+# Uso de codigos .py
 - **Por el momento el orden es el siguiente:**
-- main.py (genera un archivo .keras (LSTM model))
-- generator.py (genera una seria de numeros que reprentan notas musicales)
-- music.py (genera un archivo .mid)
+  1. main.py (genera un archivo .keras (LSTM model))
+  2. generator.py (genera una seria de numeros que reprentan notas musicales)
+  3. music.py (genera un archivo .mid)
 
 # Acerca del GUI 
 El GUI es muy simple y la ventaja es que hace el flujo de trabajo mucho mas intuitivo.
+- Por ahora el archivo gui.py solo se puede correr dentro de la carpeta Gui (no puede ejecutarse de manera relativa)
 # Parametros Musicales 
 Como ya he mencionado la teoria musical es poca por lo que solo se podra modificar los siguienes aspectos
 - Escalas
