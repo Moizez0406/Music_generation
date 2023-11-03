@@ -11,19 +11,23 @@
 	(Althoug I need more rigorous testing to confirm this)
 
 ERROR:
-	+ 	Errores al momento de empzar al trabajar con las liberrias como:
+	+ 	"Errores" al momento de empzar al trabajar con las liberrias como:
 	  	Cannot find reference 'keras' in '__init__.py | __init__.py'	
 
-	+	Muy dificil a la hora de probar varios samples ya que con cada una de las puebras el tamano varian 
+	+	"Muy dificil a la hora de probar varios sample"s ya que con cada una de las puebras el tamano varian 
 		y no se puede hacer un entrenamiento con un tamano fijo.
 
-	+	Los samples creados eran muy monotonos cortos y no se podia apreciar la musica.
+	+	"Los samples creados eran muy monotonos" cortos y no se podia apreciar la musica.
 	 	ademas de que no se podia decir con certeza si cada input generaba diferentes outputs.
 
-	+	Intente asignar tiempo a las notas anets de generar mi sequencia, cambiando asi la manera ne que manejo los modelos
+	+	"Intente asignar tiempo a las notas" anets de generar mi sequencia, cambiando asi la manera ne que manejo los modelos
 		dando entonces errores, la solucion generar normals y luego asignarles el tiempo.
 
-	+	Using a bar or spinning / animation to show the process of generating music takes too long and is not very useful. 
+	+	"Reading and processing" of notes duration is very slow and took nearly 2 hours to process 7 midi files
+		Warning: After all the process we still need to train the model and that takes another 30 minutes
+
+
+	+	"Using a bar or spinning / animation" to show the process of generating music takes too long and is not very useful. 
 		
 Info:
 	+	Started with the idea of just generate sound

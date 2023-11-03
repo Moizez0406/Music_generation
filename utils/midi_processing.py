@@ -21,6 +21,7 @@ def midi_to_note_duration(midiFile, decimalPlaces=3):
             print(".", end="")
             sys.stdout.flush()  # Flush the buffer to ensure dots are printed immediately
             time.sleep(0.1)
+            # time.sleep(0.01)
     except Exception as e:
         print("Error al abrir el archivo MIDI:", e)
 
@@ -28,17 +29,22 @@ def midi_to_note_duration(midiFile, decimalPlaces=3):
     return note_ticks
 
 
-def load_midi_file(file_path):
+def load_midi_file(file_path, type="pitch"):
     # Get a list of all files in the specified directory
     midi_files = [os.path.join(file_path, file) for file in os.listdir(
         file_path) if file.endswith(".mid")]
 
-    all_note_sequences = []
+    main_sequence = []
     for midi_file_path in midi_files:
-        note_sequences = midi_to_note_sequences(midi_file_path)
-        all_note_sequences.extend(note_sequences)
-
-    return all_note_sequences
+        if type == "pitch":
+            note_sequences = midi_to_note_sequences(midi_file_path)
+            main_sequence.extend(note_sequences)
+        elif type == "duration":
+            note_durations = midi_to_note_duration(midi_file_path)
+            main_sequence.extend(note_durations)
+        else:
+            raise Exception("Invalid type. Must be 'pitch' or 'duration'")
+    return main_sequence
 
 
 def midi_to_note_sequences(midi_file_path):
