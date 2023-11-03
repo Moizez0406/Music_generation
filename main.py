@@ -4,8 +4,9 @@ from utils.midi_processing import *
 from models.lstm_model.model import create_lstm_model
 from config.config import SEQ_LENGTH, LSTM_EPOCHS, BATCH_SIZE
 
-all_note_sequences = load_midi_file("data/raw_data/midi_files")
-# print("Note Sequences from MIDIs:", all_note_sequences)
+all_note_sequences = load_midi_file("data/raw_data/")
+# all_note_duration = midi_to_note_duration(
+# "data/raw_data/midi_files/alla-turca.mid")
 
 # Convert merged note sequences to one-hot encoding
 all_one_hot_sequences = midi_to_one_hot(all_note_sequences)

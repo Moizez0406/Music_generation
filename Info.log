@@ -1,37 +1,14 @@
-Train Your Model (if not pre-trained):
-	If you are using a machine learning model like the LSTM model mentioned earlier, 	you'll need to train it on your MIDI data. Training involves feeding your model with 	input sequences (like segments of MIDI notes) and their corresponding target 	sequences (the notes you want the model to learn to generate). This step is crucial 	for the model to learn the patterns in your music data.
+1. 	Install the following libraries:
+	+	https://www.tensorflow.org/install/pip
+	+	https://keras.io/
+	+	https://www.python.org/downloads/
+	+	https://www.anaconda.com/products/individual
+	+	https://www.anaconda.com/products/individual#Downloads
+	+	https://www.anaconda.com/products/individual#Downloads
+	+	https://www.anaconda.com/products/individual
 
-Load Pre-trained Model (if using one):
-	If you're using a pre-trained model, you'll need to load it before generating music. 	Make sure the pre-trained model is compatible with the architecture you are using in 	your code.
-
-Generate Music:
-	After your model is trained or loaded, you can use it to generate music. To generate 	music, you'll need to provide an initial seed (a sequence of notes) to the model. The 	model will then predict the next notes based on the seed, and you can use these 	predictions to create a new sequence of notes. You might need to experiment with the 	length of the generated sequence and other parameters to get the desired output.
-
--------------------------------------------------------------------------------------------
-
-
-1. Prepare Your Data:
-	Organize your MIDI files and preprocess them into sequences suitable for training. 	This might involve representing notes as numerical values or one-hot encodings.
-	
-
-2. Define Model Architecture:
-	Choose an appropriate model architecture for music generation, like LSTM or 	Transformer.Design the input and output layers of the model. Set hyperparameters 	such as the number of LSTM units, learning rate, batch size,etc.
-
-
-3. Split Data into Training and Validation Sets:
-	Split your preprocessed data into training and validation sets. Typically, 80% for 	training and 20% for validation is a common split.
-
-
-4. Compile Your Model:
-	Choose an appropriate loss function (like categorical crossentropy) and optimizer 	(like Adam) for compilation.
-	Compile your model to prepare it for training.
-
-
-5. Train Your Model:
-	Train the model using your training data.
-	Monitor the training process using validation data to avoid overfitting.
-	Experiment with different architectures and hyperparameters to improve results.
-
+2. 	Rounding the process of reading the note durations increas speed significantly
+	(Althoug I need more rigorous testing to confirm this)
 
 ERROR:
 	+ 	Errores al momento de empzar al trabajar con las liberrias como:
@@ -45,6 +22,8 @@ ERROR:
 
 	+	Intente asignar tiempo a las notas anets de generar mi sequencia, cambiando asi la manera ne que manejo los modelos
 		dando entonces errores, la solucion generar normals y luego asignarles el tiempo.
+
+	+	Using a bar or spinning / animation to show the process of generating music takes too long and is not very useful. 
 		
 Info:
 	+	Started with the idea of just generate sound
@@ -53,9 +32,34 @@ Info:
 	+	implemented silences
 	+	implemented chords
 	+	implemented sound modulation
+	+	En un archivo MIDI, cada evento musical, como la pulsación de una tecla, 
+		se representa como un mensaje MIDI que incluye información sobre la nota, la duración y la intensidad, entre otros detalles.
+		Esto hace que los archivos MIDI sean una fuente rica de información para entrenar modelos de generación musical.
 	+   Thats All Folks :D
 
-Reference:
+	+	Combine Process for Notes and Durations:
+		Pros:
+
+		Simplicity: Combining the processes can simplify your code by handling both notes and durations in one go.
+		 This can lead to a more straightforward and easier-to-maintain implementation.
+
+		Consistency: Handling notes and durations together can ensure that the relationships between notes and their
+		 respective durations are preserved consistently.
+		 
+		Cons:
+
+		Complexity: If the combined process becomes too complex, it might be harder to debug and maintain, especially if you have intricate logic for both notes and durations.
+		Performance Impact: Depending on the volume of MIDI data and the complexity of calculations, handling both notes and durations together might impact performance if the process becomes computationally intensive.
+		Separate Processes for Notes and Durations:
+		Pros:
+
+		Modularity: Separating notes and durations into different processes can improve modularity. Each process can focus on its specific task, making the code more modular and easier to manage.
+		Scalability: If your application grows, you can scale the processing of notes and durations independently based on your system's needs.
+		Performance Optimization: You can optimize each process individually based on the specific requirements of notes and durations. For example, you might apply different algorithms or optimizations depending on the task.
+		Cons:
+
+		Complex Relationships: Managing the relationships between notes and their corresponding durations might become more challenging if handled separately. Ensuring consistency becomes crucial.
+		Reference:
 	+	https://www.flaticon.es/ [Here I got all the icons]
 
 
