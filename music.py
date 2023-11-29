@@ -5,6 +5,8 @@ from utils.music_theory import *  # Asegúrate de importar TIEMPO_NEGRA u otras 
 TEMPO = 120  # Este es un ejemplo. Puedes ajustar el valor según tus preferencias (BPM).
 
 # Carga la secuencia generada desde el archivo JSON
+# with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
+    # generated_sequence = json.load(json_file)
 with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
     generated_sequence = json.load(json_file)
 
@@ -46,7 +48,7 @@ try:
     midi_data.instruments.append(instrument)
 
     # Guarda la música generada como un archivo MIDI
-    midi_data.write('out/music/generated_music.mid')
+    midi_data.write('out/music/generated_OnlyBadi.mid')
     print("Archivo MIDI generado con éxito.")
 except Exception as e:
     print(f"Error al generar el archivo MIDI: {e}")

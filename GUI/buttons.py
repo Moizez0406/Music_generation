@@ -29,7 +29,8 @@ def abrir_explorador_mid(canvas):
     # Verifica si se seleccionaron archivos
     if archivos_seleccionados:
         # Carpeta destino donde se copiará el archivo
-        carpeta_destino = "D:/Universidad/Semester 5/AI and CV/music_generation/data/raw_data/midi_files"
+        carpeta_destino = "/home/moises/programming/Music_generation/data/raw_data/midi_files"
+        # carpeta_destino = "D:/Universidad/Semester 5/AI and CV/music_generation/data/raw_data/midi_files"
         # Copia el archivo seleccionado a la carpeta destino
         for archivo in archivos_seleccionados:
             shutil.copy(archivo, carpeta_destino)

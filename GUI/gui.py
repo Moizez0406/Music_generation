@@ -59,13 +59,13 @@ canvas.pack(side="left", fill="both", expand=True)
 scrollbar.config(command=canvas.yview)
 
 
-load_icons("D:/Universidad/Semester 5/AI and CV/music_generation/data/raw_data/midi_files",
+load_icons("/home/moises/programming/Music_generation/data/raw_data/midi_files",
            "icons/reproductor-de-musica.png", ".mid", canvas, "#555")
 
-load_icons("D:/Universidad/Semester 5/AI and CV/music_generation/out/music",
+load_icons("/home/moises/programming/Music_generation/out/music",
            "icons/lira.png", ".mid", first_tab, "#777", True)
 
-load_icons("D:/Universidad/Semester 5/AI and CV/music_generation/out/Tmodels",
+load_icons("/home/moises/programming/Music_generation/out/Tmodels",
            "icons/neurona.png", ".keras", right_frame, "#555")
 
 create_button("Play", on_play_clicked, first_tab)
