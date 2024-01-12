@@ -1,7 +1,8 @@
 import pretty_midi
 import json
-import numpy as np
 from utils.music_theory import *  # Make sure to import TIEMPO_NEGRA or other necessary durations
+import numpy as np
+import time
 
 TEMPO = 120
 
@@ -17,6 +18,7 @@ for note in generated_sequence:
 
 # Function to add random silences between notes
 def add_random_silences(sequence, num_silences, min_silence_duration, max_silence_duration):
+    np.random.seed(int(time.time()))  # Set a seed based on the current time
     new_sequence = []
     for note_info in sequence:
         new_sequence.append(note_info)
