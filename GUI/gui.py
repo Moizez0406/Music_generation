@@ -34,7 +34,7 @@ center_frame.add(second_tab, text="Fix some parameters")
 # Add content to the frames
 label_left = tk.Label(left_frame, text="Music Samples", fg="white", bg="#555")
 label_right = tk.Label(
-    right_frame, text="Trained Models\n(Select the model you want to generate music)", fg="white", bg="#555")
+    right_frame, text="Trained Models\n(Select the model from which you want to generate music)", fg="white", bg="#555")
 
 for label in [label_left, label_right]:
     label.pack(pady=20)

@@ -1,54 +1,65 @@
 import pretty_midi
 import json
-from utils.music_theory import *  # Asegúrate de importar TIEMPO_NEGRA u otras duraciones necesarias
+import numpy as np
+from utils.music_theory import *  # Make sure to import TIEMPO_NEGRA or other necessary durations
 
-TEMPO = 120  # Este es un ejemplo. Puedes ajustar el valor según tus preferencias (BPM).
+TEMPO = 120
 
-# Carga la secuencia generada desde el archivo JSON
-# with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
-    # generated_sequence = json.load(json_file)
+# Load the generated sequence from the JSON file
 with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
     generated_sequence = json.load(json_file)
 
-# Formatea la secuencia generada según el formato [nota, duración]
+# Format the generated sequence as [note, duration]
 formatted_sequence = []
 for note in generated_sequence:
-    # Asigna una duración fija a cada nota (por ejemplo, TIEMPO_NEGRA)
-    duration = TIEMPO_NEGRA  # Puedes ajustar esta duración según tus preferencias
-    formatted_sequence.append([note, duration])
-    
-# Define una función para convertir notas numéricas en notas MIDI dentro del rango válido [0, 127]
+    duration = TIEMPO_NEGRA
+    formatted_sequence.append({'note': note, 'duration': duration})
+
+# Function to add random silences between notes
+def add_random_silences(sequence, num_silences, min_silence_duration, max_silence_duration):
+    new_sequence = []
+    for note_info in sequence:
+        new_sequence.append(note_info)
+        for _ in range(num_silences):
+            silence_duration = np.random.uniform(min_silence_duration, max_silence_duration)
+            new_sequence.append({'note': None, 'duration': silence_duration})
+    return new_sequence
+
+# Number of random silences to add between notes
+num_silences = 3
+
+# Minimum and maximum duration of the random silences
+min_silence_duration = 0.1
+max_silence_duration = 0.5
+
+# Add random silences to the formatted sequence
+sequence_with_silences = add_random_silences(formatted_sequence, num_silences, min_silence_duration, max_silence_duration)
+
+# Function to convert notes to MIDI
 def convert_to_midi_notes(sequence):
     midi_notes = []
-    current_time = 0  # Lleva el seguimiento del tiempo actual para asignar las duraciones de las notas
+    current_time = 0
     for note_info in sequence:
-        # Mapea la nota al rango de tono MIDI válido [0, 127]
-        midi_note = max(0, min(note_info[0], 127))
-        # Calcula el tiempo de finalización de la nota basado en la duración proporcionada
-        end_time = current_time + TIEMPO_SEMICORCHEA * note_info[1]
-        # Crea un objeto de nota MIDI con la duración proporcionada
-        note = pretty_midi.Note(velocity=100, pitch=midi_note, start=current_time, end=end_time)
-        midi_notes.append(note)
-        # Actualiza el tiempo actual para la próxima nota
-        current_time = end_time
+        if note_info['note'] is not None:
+            midi_note = max(0, min(note_info['note'], 127))
+            end_time = current_time + TIEMPO_SEMICORCHEA * note_info['duration']
+            note = pretty_midi.Note(velocity=100, pitch=midi_note, start=current_time, end=end_time)
+            midi_notes.append(note)
+            current_time = end_time
+        else:
+            current_time += note_info['duration']  # Skip the duration of the silence
     return midi_notes
 
-
 try:
-    # Convierte las notas numéricas en notas MIDI con las duraciones asociadas
-    midi_notes = convert_to_midi_notes(formatted_sequence)
+    midi_notes = convert_to_midi_notes(sequence_with_silences)
     midi_data = pretty_midi.PrettyMIDI(initial_tempo=TEMPO)
-    instrument = pretty_midi.Instrument(program=0)  # 0 corresponde al Acoustic Grand Piano
+    instrument = pretty_midi.Instrument(program=0)
 
-    # Agrega las notas generadas al instrumento
     for midi_note in midi_notes:
         instrument.notes.append(midi_note)
 
-    # Agrega el instrumento a los datos MIDI
     midi_data.instruments.append(instrument)
-
-    # Guarda la música generada como un archivo MIDI
-    midi_data.write('out/music/generated_OnlyBadi.mid')
-    print("Archivo MIDI generado con éxito.")
+    midi_data.write('out/music/generated_WithSilences.mid')
+    print("MIDI file generated successfully.")
 except Exception as e:
-    print(f"Error al generar el archivo MIDI: {e}")
+    print(f"Error generating MIDI file: {e}")
