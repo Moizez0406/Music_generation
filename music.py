@@ -22,15 +22,15 @@ for note in generated_sequence:
     formatted_sequence.append({'note': note, 'duration': note_duration})
 
 # Function to add random silences between notes
-def add_random_silences(sequence, num_silences, min_silence_duration, max_silence_duration):
-    np.random.seed(int(time.time()))  # Set a seed based on the current time
-    new_sequence = []
-    for note_info in sequence:
-        new_sequence.append(note_info)
-        for _ in range(num_silences):
-            silence_duration = np.random.uniform(min_silence_duration, max_silence_duration)
-            new_sequence.append({'note': None, 'duration': silence_duration})
-    return new_sequence
+# def add_random_silences(sequence, num_silences, min_silence_duration, max_silence_duration):
+#     np.random.seed(int(time.time()))  # Set a seed based on the current time
+#     new_sequence = []
+#     for note_info in sequence:
+#         new_sequence.append(note_info)
+#         for _ in range(num_silences):
+#             silence_duration = np.random.uniform(min_silence_duration, max_silence_duration)
+#             new_sequence.append({'note': None, 'duration': silence_duration})
+#     return new_sequence
 
 # Number of random silences to add between notes
 num_silences = 3
@@ -40,7 +40,7 @@ min_silence_duration = 0.1
 max_silence_duration = 0.5
 
 # Add random silences to the formatted sequence
-sequence_with_silences = add_random_silences(formatted_sequence, num_silences, min_silence_duration, max_silence_duration)
+# sequence_with_silences = add_random_silences(formatted_sequence, num_silences, min_silence_duration, max_silence_duration)
 
 # Function to convert notes to MIDI
 def convert_to_midi_notes(sequence):
@@ -58,7 +58,7 @@ def convert_to_midi_notes(sequence):
     return midi_notes
 
 try:
-    midi_notes = convert_to_midi_notes(sequence_with_silences)
+    midi_notes = convert_to_midi_notes(formatted_sequence)
     midi_data = pretty_midi.PrettyMIDI(initial_tempo=TEMPO)
     instrument = pretty_midi.Instrument(program=0)
 
@@ -66,7 +66,7 @@ try:
         instrument.notes.append(midi_note)
 
     midi_data.instruments.append(instrument)
-    midi_data.write('out/music/generated_WithSilences.mid')
+    midi_data.write('out/music/generated_NEW.mid')
     print("MIDI file generated successfully.")
 except Exception as e:
     print(f"Error generating MIDI file: {e}")
