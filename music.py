@@ -13,8 +13,13 @@ with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
 # Format the generated sequence as [note, duration]
 formatted_sequence = []
 for note in generated_sequence:
-    duration = TIEMPO_NEGRA
-    formatted_sequence.append({'note': note, 'duration': duration})
+    # Choose the range for the random note duration
+    lower_bound = min(TIEMPO_SEMIFUSA, TIEMPO_FUSA, TIEMPO_SEMICORCHEA, TIEMPO_CORCHEA, TIEMPO_NEGRA, TIEMPO_BLANCA)
+    upper_bound = max(TIEMPO_SEMIFUSA, TIEMPO_FUSA, TIEMPO_SEMICORCHEA, TIEMPO_CORCHEA, TIEMPO_NEGRA, TIEMPO_BLANCA)
+
+    # Generate a random note duration within the specified range
+    note_duration = np.random.uniform(lower_bound, upper_bound)
+    formatted_sequence.append({'note': note, 'duration': note_duration})
 
 # Function to add random silences between notes
 def add_random_silences(sequence, num_silences, min_silence_duration, max_silence_duration):
