@@ -7,7 +7,8 @@ import time
 TEMPO = 120
 
 # Load the generated sequence from the JSON file
-with open('out/jsondata/generated_music_sequence_NEW.json', 'r') as json_file:
+file = input('Provide the name of the source: ')
+with open(f'out/jsondata/{file}.json', 'r') as json_file:
     generated_sequence = json.load(json_file)
 
 # Format the generated sequence as [note, duration]
@@ -66,7 +67,8 @@ try:
         instrument.notes.append(midi_note)
 
     midi_data.instruments.append(instrument)
-    midi_data.write('out/music/generated_NEW.mid')
+    name = input('Please provide a name for the generated file: ')
+    midi_data.write(f'out/music/{name}.mid')
     print("MIDI file generated successfully.")
 except Exception as e:
     print(f"Error generating MIDI file: {e}")

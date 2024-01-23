@@ -7,8 +7,7 @@ import json
 # Load the trained model
 modelNotes = load_model('out/Tmodels/NEW_notes_model.keras')
 num_unique_notes = modelNotes.output_shape[1]
-initial_seed = [71, 69, 68, 69, 72, 57, 60, 64,
-                74, 60, 64, 72, 71, 60, 64, 72, 76, 57, 60, 64]
+initial_seed = [65, 63, 60, 64, 67, 69, 65, 63, 60, 64, 67, 69, 65, 63, 60, 64, 67, 69, 65, 63]
 
 # Set the desired length of the generated sequence
 sequence_length = 500
@@ -19,7 +18,8 @@ generated_sequence = generate_music_sequence(
 
 try:
     # Save the generated sequence as a JSON file
-    with open('out/jsondata/generated_music_sequence_NEW.json', 'w') as json_file:
+    name = input("Please provide a name for the output file: ")
+    with open(f'out/jsondata/{name}.json', 'w') as json_file:
         json.dump(generated_sequence, json_file)
 
     # with open('out/jsondata/generated_duration_sequence.json', 'w') as json_file:
