@@ -5,8 +5,7 @@ import numpy as np
 import json
 
 # Load the trained model
-modelNotes = load_model('out/Tmodels/music_model_combined.keras')
-
+modelNotes = load_model('out/Tmodels/NEW_notes_model.keras')
 num_unique_notes = modelNotes.output_shape[1]
 initial_seed = [71, 69, 68, 69, 72, 57, 60, 64,
                 74, 60, 64, 72, 71, 60, 64, 72, 76, 57, 60, 64]

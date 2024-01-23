@@ -7,7 +7,7 @@ import time
 TEMPO = 120
 
 # Load the generated sequence from the JSON file
-with open('out/jsondata/generated_music_sequence.json', 'r') as json_file:
+with open('out/jsondata/generated_music_sequence_NEW.json', 'r') as json_file:
     generated_sequence = json.load(json_file)
 
 # Format the generated sequence as [note, duration]
